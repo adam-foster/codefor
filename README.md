@@ -1,2 +1,3 @@
-# codefor
-codefor.com
+# Codefor
+
+Playground for codefor.com
