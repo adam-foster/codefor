@@ -1,55 +1,23 @@
 import { StrictMode } from 'react'
 import './hunt.css'
 import { createRoot } from 'react-dom/client';
-import { HashRouter, Routes, Route, Link } from 'react-router-dom';
-
-function Home() {
-  return (
-    <div>
-      <h1>Home</h1>
-      <Link to="/location">Location clue</Link>
-      <Link to="/lock-box">LockBox clue</Link>
-      <Link to="/activity">Activity</Link>
-    </div>
-  );
-}
-
-function Location() {
-  return (
-    <div>
-      <h1>Location</h1>
-      <Link to="/">Back Home</Link>
-    </div>
-  );
-}
-
-function LockBox() {
-  return (
-    <div>
-      <h1>LockBox</h1>
-      <Link to="/">Back Home</Link>
-    </div>
-  );
-}
-
-function Activity() {
-  return (
-    <div>
-      <h1>Activity</h1>
-      <Link to="/">Back Home</Link>
-    </div>
-  );
-}
+import { HashRouter, Routes, Route } from 'react-router-dom';
+import Home from './pages/home';
+import Location from './pages/location';
+import LockBox from './pages/lockBox';
+import Activity from './pages/activity';
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
     <HashRouter>
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/location" element={<Location />} />
-        <Route path="/lock-box" element={<LockBox />} />
-        <Route path="/activity" element={<Activity />} />
-      </Routes>
+      <main className="mx-auto bg-gray-50 sm:max-w-xl sm:my-10 sm:border sm:rounded-2xl sm:overflow-hidden">
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/location" element={<Location />} />
+          <Route path="/lock-box" element={<LockBox />} />
+          <Route path="/activity" element={<Activity />} />
+        </Routes>
+      </main>
     </HashRouter>
   </StrictMode>
 );
