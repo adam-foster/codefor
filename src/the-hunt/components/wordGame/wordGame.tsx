@@ -261,7 +261,7 @@ export default function WordGame() {
         <div
           ref={boardRef}
           tabIndex={0}
-          className="outline-none select-none mb-6 grid gap-2"
+          className="outline-none select-none mb-6 grid gap-2  max-w-md mx-auto"
           style={{ gridTemplateRows: `repeat(${rows.length}, minmax(0, 1fr))` }}
           aria-label="Wordle board"
         >

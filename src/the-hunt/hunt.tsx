@@ -7,6 +7,7 @@ import Location from './pages/location';
 import Location2 from './pages/location2'
 import LockBox from './pages/lockBox';
 import Activity from './pages/activity';
+import GeoGate from './pages/geoGate';
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
@@ -17,6 +18,7 @@ createRoot(document.getElementById('root')!).render(
           <Route path="/location" element={<Location />} />
           <Route path="/location/2" element={<Location2 />} />
           <Route path="/lock-box" element={<LockBox />} />
+          <Route path="/geo-gate" element={<GeoGate />} />
           <Route path="/activity" element={<Activity />} />
         </Routes>
       </main>

@@ -5,6 +5,7 @@ import { useEffect, useState } from 'react';
 import { STORAGE_KEY as WORD_STORAGE_KEY } from '../components/wordGame/wordGame';
 import { STORAGE_KEY as ANAGRAM_STORAGE_KEY } from '../components/anagramGame/anagramGame';
 import { STORAGE_KEY as NUMBER_STORAGE_KEY } from '../components/numberGame/numberGame';
+import { STORAGE_KEY as GEO_STORAGE_KEY } from '../components/geoGate/geoGate';
 
 function Button({ children, href, isDisabled, isComplete }: { children: React.ReactNode; href: string; isDisabled: boolean; isComplete?: boolean; }) {
   const baseClasses = "w-full py-4 text-center text-sm font-medium text-gray-800 border rounded-xl shadow-sm transition"
@@ -21,7 +22,7 @@ function Button({ children, href, isDisabled, isComplete }: { children: React.Re
     >
       {children}
       {` `}
-      {isComplete ? "✅" : "→"}
+      {isComplete ? "" : "→"}
     </Link>
   );
 }
@@ -29,6 +30,7 @@ function Button({ children, href, isDisabled, isComplete }: { children: React.Re
 function Home() {
   const [isLocationFound1, setIsLocationFound1] = useState(false);
   const [isLocationFound2, setIsLocationFound2] = useState(false);
+  const [isAtLocation, setIsAtLocation] = useState(false);
   const [isLockBoxOpen, setIsLockBoxOpen] = useState(false);
 
   // --- Hydrate from localStorage
@@ -56,8 +58,16 @@ function Home() {
         setIsLockBoxOpen(data?.status === "won")
       }
 
+      const geoRaw = localStorage.getItem(GEO_STORAGE_KEY);
+      if (geoRaw) {
+        const data = JSON.parse(geoRaw);
+        setIsAtLocation(data?.inside === true)
+      }
+
     } catch {}
   }, []);
+
+  const isLocationFound = isLocationFound1 && isLocationFound2;
 
   return (
     <>
@@ -65,9 +75,25 @@ function Home() {
         <div className="flex flex-col items-center justify-center p-5">
             <h1 className="mb-5">Welcome to The Hunt 2025!</h1>
             <div className="w-full flex flex-col gap-4">
-                <Button isComplete={isLocationFound1 && isLocationFound2} isDisabled={false} href="/location">1. Location clue</Button>
-                <Button isComplete={isLockBoxOpen} isDisabled={!isLocationFound1 || !isLocationFound2} href="/lock-box">2. Lockbox code clue</Button>
-                <Button isDisabled={!isLockBoxOpen} href="/activity">3. Activity</Button>
+                <Button isComplete={isLocationFound} isDisabled={false} href="/location">
+                  1. Location clue
+                  {
+                    isLocationFound && <strong className="ml-2 bg-green-600 text-white text-xs px-2 py-1 rounded-md">✔ DANCERS' ALLEY</strong>
+                  }
+                </Button>
+                <Button isComplete={isLockBoxOpen} isDisabled={!isLocationFound && !isLockBoxOpen} href="/lock-box">
+                  2. Lockbox code clue
+                  {
+                    isLockBoxOpen && <strong className="ml-2 bg-green-600 text-white text-xs px-2 py-1 rounded-md">✔ 7662</strong>
+                  }
+                </Button>
+                <Button isComplete={isAtLocation} href="/geo-gate" isDisabled={!isLockBoxOpen}>
+                  3. Go to location 🏃‍♂️
+                  {
+                    isAtLocation && <strong className="ml-2 bg-green-600 text-white text-xs px-2 py-1 rounded-md">✔</strong>
+                  }
+                </Button>
+                <Button isDisabled={!isAtLocation} href="/activity">4. Activity</Button>
             </div>
         </div>
     </>
