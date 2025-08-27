@@ -176,7 +176,7 @@ export default function WordGame() {
       const letters = (current.toUpperCase().padEnd(WORD_LENGTH, " ").slice(0, WORD_LENGTH)).split("");
       const states: CellState[] = Array(WORD_LENGTH)
         .fill("tbd")
-        .map((s, i) => (letters[i] === " " ? "empty" : "tbd"));
+        .map((_, i) => (letters[i] === " " ? "empty" : "tbd"));
       evalRows.push({ letters, states });
     }
     return evalRows; // typing row is always visible while playing
