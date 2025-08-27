@@ -1,8 +1,13 @@
-function Header() {
+import { Link } from 'react-router-dom';
+
+function Header({ label, href = '/' } : { label: string; href?: string; }) {
   return (
-    <div>
-      <img src="/the-hunt.jpg" alt="The Hunt" className='w-full' />
-    </div>
+    <footer className="border-b p-5 flex justify-between items-center pr-15">
+      <Link to={href}>← Back</Link>
+      <div className="flex flex-1 justify-center">
+        <h1 className='text-lg font-bold'>{label}</h1>
+      </div>
+    </footer>
   );
 }
 

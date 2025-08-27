@@ -1,12 +1,12 @@
 import Header from "../components/header";
-import WordGame from "../components/wordGame/wordGame";
+import AnagramGame from "../components/anagramGame/anagramGame";
 
 function Location() {
   return (
     <>
-        <Header label="Location clue" />
+        <Header href="/location" label="Location clue (2)" />
         <div className="p-5">
-            <WordGame />
+            <AnagramGame />
         </div>
     </>
   );

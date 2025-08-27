@@ -1,11 +1,11 @@
-import Footer from "../components/footer";
+import Header from "../components/header";
 
 function LockBox() {
   return (
     <>
-        <Footer />
+        <Header label="2. Lockbox clue" />
         <div className="p-5">
-            <h1>2. Lockbox clue</h1>
+            TODO
         </div>
     </>
   );

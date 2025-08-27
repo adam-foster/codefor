@@ -1,11 +1,11 @@
-import Footer from "../components/footer";
+import Header from "../components/header";
 
 function Activity() {
   return (
     <>
-        <Footer />
+        <Header label="3. Activity" />
         <div className="p-5">
-            <h1>3. Activity</h1>
+            TODO
         </div>
     </>
   );
