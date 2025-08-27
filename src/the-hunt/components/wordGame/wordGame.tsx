@@ -296,9 +296,9 @@ export default function WordGame() {
               </div>
             : <>
               {/* On-screen keyboard */}
-              <div className="flex flex-col items-center gap-2">
+              <div className="flex flex-col items-center gap-2 w-full">
                 {KEY_ROWS.map((row, idx) => (
-                  <div key={idx} className="flex gap-1">
+                  <div key={idx} className="flex gap-1 items-center justify-center w-full">
                     {row.map((keyLabel) => {
                       const isAction = keyLabel === "ENTER" || keyLabel === "⌫";
                       const state = !isAction ? keys[keyLabel] : undefined;
@@ -311,9 +311,9 @@ export default function WordGame() {
                             else handleAddLetter(keyLabel);
                           }}
                           className={[
-                            "py-3 rounded-md text-xs font-semibold",
-                            "transition-colors duration-150 shadow-sm",
-                            keyLabel === "ENTER" ? "min-w-[3.5rem]" : "min-w-7 w-full max-w-10",
+                            "py-4 rounded-md text-xs font-semibold",
+                            "transition-colors duration-150 shadow-sm flex-1",
+                            keyLabel === "ENTER" ? "max-w-[3.5rem] min-w-13" : "max-w-12",
                             isAction ? "bg-gray-300 text-gray-900" : keyClassForState(state),
                           ].join(" ")}
                           aria-label={keyLabel === "⌫" ? "Backspace" : keyLabel}

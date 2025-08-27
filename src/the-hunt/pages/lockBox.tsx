@@ -1,11 +1,12 @@
 import Header from "../components/header";
+import NumberGame from "../components/numberGame/numberGame";
 
 function LockBox() {
   return (
     <>
-        <Header label="2. Lockbox clue" />
+        <Header label="Lockbox clue" />
         <div className="p-5">
-            TODO
+            <NumberGame />
         </div>
     </>
   );

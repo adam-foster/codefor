@@ -4,7 +4,7 @@ import Banner from '../components/banner';
 import { useEffect, useState } from 'react';
 import { STORAGE_KEY as WORD_STORAGE_KEY } from '../components/wordGame/wordGame';
 import { STORAGE_KEY as ANAGRAM_STORAGE_KEY } from '../components/anagramGame/anagramGame';
-
+import { STORAGE_KEY as NUMBER_STORAGE_KEY } from '../components/numberGame/numberGame';
 
 function Button({ children, href, isDisabled, isComplete }: { children: React.ReactNode; href: string; isDisabled: boolean; isComplete?: boolean; }) {
   const baseClasses = "w-full py-4 text-center text-sm font-medium text-gray-800 border rounded-xl shadow-sm transition"
@@ -29,7 +29,7 @@ function Button({ children, href, isDisabled, isComplete }: { children: React.Re
 function Home() {
   const [isLocationFound1, setIsLocationFound1] = useState(false);
   const [isLocationFound2, setIsLocationFound2] = useState(false);
-  const isLockboxCodeFound = false;
+  const [isLockBoxOpen, setIsLockBoxOpen] = useState(false);
 
   // --- Hydrate from localStorage
   useEffect(() => {
@@ -50,6 +50,12 @@ function Home() {
         setIsLocationFound2(data?.status === "won")
       }
 
+      const numberRaw = localStorage.getItem(NUMBER_STORAGE_KEY);
+      if (numberRaw) {
+        const data = JSON.parse(numberRaw);
+        setIsLockBoxOpen(data?.status === "won")
+      }
+
     } catch {}
   }, []);
 
@@ -60,8 +66,8 @@ function Home() {
             <h1 className="mb-5">Welcome to The Hunt 2025!</h1>
             <div className="w-full flex flex-col gap-4">
                 <Button isComplete={isLocationFound1 && isLocationFound2} isDisabled={false} href="/location">1. Location clue</Button>
-                <Button isDisabled={!isLocationFound1 || !isLocationFound2} href="/lock-box">2. Lockbox code clue</Button>
-                <Button isDisabled={!isLockboxCodeFound} href="/activity">3. Activity</Button>
+                <Button isComplete={isLockBoxOpen} isDisabled={!isLocationFound1 || !isLocationFound2} href="/lock-box">2. Lockbox code clue</Button>
+                <Button isDisabled={!isLockBoxOpen} href="/activity">3. Activity</Button>
             </div>
         </div>
     </>
