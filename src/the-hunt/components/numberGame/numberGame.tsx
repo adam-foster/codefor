@@ -13,10 +13,10 @@ const KEY_ROWS: string[][] = [
 ];
 
 const CLUES = [
-  "One of us an odd number but take a letter away and we're all even.",
+  "One of us is an odd number but take a letter away and we're all even.",
   "In time, 9 plus 5 makes the smallest of us.",
-  "We start the summit and end at the floor.",
-  "All together we make twenty-one.",
+  "We start at the summit and end at the floor.",
+  "All together we are twenty-one.",
 ];
 
 type Status = "playing" | "won" | "wrong";

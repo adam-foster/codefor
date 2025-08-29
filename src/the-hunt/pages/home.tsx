@@ -82,7 +82,7 @@ function Home() {
                   }
                 </Button>
                 <Button isComplete={isLockBoxOpen} isDisabled={!isLocationFound && !isLockBoxOpen} href="/lock-box">
-                  2. Lockbox code clue
+                  2. Lockbox
                   {
                     isLockBoxOpen && <strong className="ml-2 bg-green-600 text-white text-xs px-2 py-1 rounded-md">✔ 7662</strong>
                   }
