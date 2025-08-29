@@ -109,8 +109,12 @@ export default function NumberGame() {
   const wrongFlash = status === "wrong";
 
   const message = useMemo(() => {
-    if (status === "won") return <p>🎉 Congratulations! <br />The lockbox is now unlocked! Proceed to <strong className="bg-green-600 text-white p-1 rounded-md">DANCERS' ALLEY</strong> to complete the activity!</p>
-    return null;
+    if (status === "won") {
+      return (<>
+        <p>🎉 Congratulations! <br />The lockbox is now unlocked! Proceed to <strong className="bg-green-600 text-white p-1 rounded-md">DANCERS' ALLEY</strong> to do the activity!</p>
+      </>)
+    }
+      return null;
   }, [status]);
 
   return (
@@ -212,6 +216,8 @@ export default function NumberGame() {
             </Link>
           }
         </footer>
+
+        { status === 'won' && <p className="mt-3 text-xs text-center text-gray-500">Note: There is no physical lockbox, it's just this virtual one.</p>}
       </div>
     </div>
   );

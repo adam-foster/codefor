@@ -73,7 +73,7 @@ function Home() {
     <>
         <Banner />
         <div className="flex flex-col items-center justify-center p-5">
-            <h1 className="mb-5">Welcome to The Hunt 2025!</h1>
+            <h1 className="mb-5">Welcome to The Hunt #3</h1>
             <div className="w-full flex flex-col gap-4">
                 <Button isComplete={isLocationFound} isDisabled={false} href="/location">
                   1. Location clue
@@ -82,18 +82,18 @@ function Home() {
                   }
                 </Button>
                 <Button isComplete={isLockBoxOpen} isDisabled={!isLocationFound && !isLockBoxOpen} href="/lock-box">
-                  2. Lockbox
+                  2. Lockbox (1pt)
                   {
                     isLockBoxOpen && <strong className="ml-2 bg-green-600 text-white text-xs px-2 py-1 rounded-md">✔ 7662</strong>
                   }
                 </Button>
                 <Button isComplete={isAtLocation} href="/geo-gate" isDisabled={!isLockBoxOpen}>
-                  3. Go to location 🏃‍♂️
+                  3. Go to location (5pt) 🏃‍♂️
                   {
                     isAtLocation && <strong className="ml-2 bg-green-600 text-white text-xs px-2 py-1 rounded-md">✔</strong>
                   }
                 </Button>
-                <Button isDisabled={!isAtLocation} href="/activity">4. Activity</Button>
+                <Button isDisabled={!isAtLocation} href="/activity">4. Activity (4pt)</Button>
             </div>
         </div>
     </>

@@ -21,14 +21,13 @@ function Activity() {
           <p>Practice and perfect your moves</p>
           <br />
           <h2 className='font-bold underline'>Step 3</h2>
-          <p>Record two 5+ second video of the moonwalk and the airwalk</p>
+          <p>Record two 5+ second video of the moonwalk (1pt) and the airwalk (1pt)</p>
           <br />
           <h2 className='font-bold underline'>Step 4</h2>
-          <p>Share with everyone at the end of the day 🍻</p>
+          <p>Share with everyone in the pub at end of the day 🍻 (1pt)</p>
           <br />
           <h2 className='font-bold underline'>Step 5</h2>
-          <p>For a bonus point, share the videos on your socials</p>
-
+          <p>Optionally, share the videos on your socials (1pt)</p>
         </div>
     </>
   );
